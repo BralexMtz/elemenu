@@ -91,6 +91,33 @@ class Elementor_Navbar_Widget extends \Elementor\Widget_Base {
 				]
 			]
 		);
+		
+		$this->add_control(
+			'width',
+			[
+				'label' => __( 'Logo Width', 'elemenu' ),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%' ],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 1000,
+						'step' => 5,
+					],
+					'%' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'default' => [
+					'unit' => 'px',
+					'size' => 50,
+				],
+				'selectors' => [
+					'{{WRAPPER}} a img' => 'width: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
 
 		$repeater = new \Elementor\Repeater();
 
@@ -214,7 +241,16 @@ class Elementor_Navbar_Widget extends \Elementor\Widget_Base {
 
 		$this->end_controls_section();
 
-	
+		// $this->start_controls_section(
+		// 	'background',
+		// 	[
+		// 		'label' => __( 'Items style', 'elemenu' ),
+		// 		'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+		// 	]
+		// );
+
+		// $this->end_controls_section();
+
 
 	}
 
