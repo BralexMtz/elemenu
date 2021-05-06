@@ -161,6 +161,58 @@ class Elementor_Navbar_Widget extends \Elementor\Widget_Base {
 
 		$this->end_controls_section();
 
+		$this->start_controls_section(
+			'section_text_style',
+			[
+				'label' => __( 'Items style', 'elemenu' ),
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+		);
+
+
+		$this->add_control(
+			'text_color',
+			[
+				'label' => __( 'Text Color', 'elemenu' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'default' => '',
+				'selectors' => [
+					'{{WRAPPER}} #elemenu li a' => 'color: {{VALUE}};',
+				],
+				
+			]
+		);
+
+		$this->add_control(
+			'text_color_hover',
+			[
+				'label' => __( 'Hover', 'elemenu' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'default' => '',
+				'selectors' => [
+					'{{WRAPPER}} #elemenu li:hover a' => 'color: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'items_typography',
+				'selector' => '{{WRAPPER}} #elemenu li a',
+				
+			]
+		);
+
+		$this->add_group_control(
+			\Elementor\Group_Control_Text_Shadow::get_type(),
+			[
+				'name' => 'text_shadow',
+				'selector' => '{{WRAPPER}} #elemenu li a',
+			]
+		);
+
+		$this->end_controls_section();
 
 	
 
@@ -181,7 +233,7 @@ class Elementor_Navbar_Widget extends \Elementor\Widget_Base {
 		<?php 
 			echo ($settings['is_fixed'])?'<div class="fixed">':'';
 		?>
-				<nav id="elemenu" class="navbar">
+			<nav id="elemenu" class="navbar">
 		 		<span class="navbar-toggle" id="js-navbar-toggle">
 		 			<i class="fas fa-bars"></i>
 		 		</span>
