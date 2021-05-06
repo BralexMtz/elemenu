@@ -178,7 +178,9 @@ class Elementor_Navbar_Widget extends \Elementor\Widget_Base {
 
 		$settings = $this->get_settings_for_display();
 		?>
-			<?php if($settings['is_fixed']){ ?>
+		<?php 
+			echo ($settings['is_fixed'])?'<div class="fixed">':'';
+		?>
 				<nav id="elemenu" class="navbar">
 		 		<span class="navbar-toggle" id="js-navbar-toggle">
 		 			<i class="fas fa-bars"></i>
@@ -199,30 +201,12 @@ class Elementor_Navbar_Widget extends \Elementor\Widget_Base {
 		 			?>
 		 		</ul>
 		 	</nav>
-			<?php }?>
-			
-		 	<nav id="elemenu" class="navbar <?php echo $settings['is_fixed']? 'fixed':''; ?> ">
-		 		<span class="navbar-toggle" id="js-navbar-toggle">
-		 			<i class="fas fa-bars"></i>
-		 		</span>
-		 		<a href="#" class="logo">
-		 			<img src="<?php echo $settings['image']['url']; ?>" alt="" width="50">
-		 		</a>
-				 
-		 		<ul class="main-nav" id="js-menu">
-					<?php
-		 				foreach ( $settings['menu_items'] as $index => $item ) {
-		 					echo '<li>';
-		 						echo '<a href="'.$item['link']['url'].'" class="nav-links">';
-		 							echo $item['text'];
-		 						echo '</a>';
-		 					echo '</li>';
-		 				}
-		 			?>
-		 		</ul>
-		 	</nav>
+		
+
+		<?php 
+			echo ($settings['is_fixed'])?'</div>':'';
+		?>		 	
 		 <?php
-			// echo"<div>HOLA</div>";
 	}
 
 }
